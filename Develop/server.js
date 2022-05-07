@@ -1,17 +1,15 @@
 const express = require("express");
 const path = require("path");
 const fs = require("fs");
-const { Server } = require("http");
 
-const PORT = 8080;
 
 const app = express();
 
 
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
 
-app.use(express.static ('public'));
+
+app.use(express.static('public'));
 
 //homepage path
 app.get("/", (req, res) => {
@@ -39,17 +37,17 @@ app.post("/api/notes", (req, res) => {
             console.error(err);
             return;
         }
-    let currentData = JSON.parse(data);
-    let fullPath = path.join(__dirname + "/db/db.json");
-    console.log(fullPath);
-    console.log(req.body);
-    currentData.push(req.body);
-    fs.writeFile(fullPath, JSON.stringify(currentData), (err) => {
-        if (err) {
-            console.error(err);
-        }
-    });
-    res.send(currentData);
+        let currentData = JSON.parse(data);
+        let fullPath = path.join(__dirname + "/db/db.json");
+        console.log(fullPath);
+        console.log(req.body);
+        currentData.push(req.body);
+        fs.writeFile(fullPath, JSON.stringify(currentData), (error) => {
+            if (error) {
+                console.error(error);
+            }
+        });
+        res.send(currentData);
     });
 });
 
