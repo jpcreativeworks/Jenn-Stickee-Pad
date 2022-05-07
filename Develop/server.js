@@ -32,6 +32,26 @@ app.get("/api/notes", (req, res) =>{
         res.send(data);
     });
 });
+//write note
+app.post("/api/notes", (req, res) => {
+    fs.readFile(path.join(__dirname + "/db/db.json"), "utf8", (err, data) => {
+        if (err) {
+            console.error(err);
+            return;
+        }
+    let currentData = JSON.parse(data);
+    let fullPath = path.join(__dirname + "/db/db.json");
+    console.log(fullPath);
+    console.log(req.body);
+    currentData.push(req.body);
+    fs.writeFile(fullPath, JSON.stringify(currentData), (err) => {
+        if (err) {
+            console.error(err);
+        }
+    });
+    res.send(currentData);
+    });
+});
 
 console.log('server listening on localhost:8080');
 app.listen(8080);
