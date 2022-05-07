@@ -13,9 +13,13 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(express.static ('public'));
 
-
+//homepage path
 app.get("/", (req, res) => {
     res.sendFile(path.join(__dirname + "/public/index.html"));
+});
+
+app.get("/notes", (req, res) => {
+    res.sendFile(path.join(__dirname + "/public/notes.html"));
 });
 
 console.log('server listening on localhost:8080');
