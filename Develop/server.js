@@ -1,7 +1,8 @@
 const express = require("express");
 const path = require("path");
 const fs = require("fs");
-const { send } = require("process");
+const { error } = require("console");
+
 
 const app = express();
 
@@ -21,7 +22,7 @@ app.get("/notes", (req, res) => {
 app.get("/api/notes", (req, res) => {
     fs.readFile(path.join(__dirname + "/db/db.json"), "utf8", (err, data) => {
         if (err) {
-            console.log(err);
+            console.error(err);
             return;
         }
         res.setHeader("Content-Type", "application/json");
@@ -32,17 +33,18 @@ app.get("/api/notes", (req, res) => {
 app.post("/api/notes", (req, res) => {
     fs.readFile(path.join(__dirname + "/db/db.json"), "utf8", (err, data) => {
         if (err) {
-            console.log(err);
+            console.error(err);
             return;
         }
         let currentData = JSON.parse(data);
+
         let fullPath = path.join(__dirname + "/db/db.json");
         console.log(fullPath);
         console.log(req.body);
         currentData.push(req.body);
-        fs.writeFile(fullPath, JSON.stringify(currentData), (err) => {
-            if (err) {
-                console.log(err);
+        fs.writeFile(fullPath, JSON.stringify(currentData), (error) => {
+            if (error) {
+                console.error(error);
             }
         });
         res.send(currentData);
@@ -53,15 +55,15 @@ app.delete("api/notes/:id", (req,res) => {
     let id = req.params.id;
     fs.readFile(path.join(__dirname + "/db/db.json"), "utf8", (err, data) =>{
         if (err) {
-            console.log(err);
+            console.error(err);
             return;
         }
         let currentData = JSON.parse(data);
         currentData = currentData.filter((value) => value.id !== parseInt(id));
         let fullPath = path.join(__dirname + "/db/db.json");
-        fs.writeFile(fullPath, JSON.stringify(currentData), (err) => {
-            if (err) {
-                console.log(err);
+        fs.writeFile(fullPath, JSON.stringify(currentData), (error) => {
+            if (error) {
+                console.error(error);
             }
         });
         res.send(currentData);
