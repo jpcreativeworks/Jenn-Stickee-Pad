@@ -14,3 +14,10 @@ do an npm install with express and node to get started with any back end edits.
 
 I had trouble with the delete button. I feel like I tried my best but since it was just a bonus I abandoned it. any suggestions is appreciated. 
 
+## screenshot
+![Stickee Pad Screenshot on localhost](./public/assets/localhost_8080_notes.png)
+![Stickee Pad Screenshot on heroku](./public/assets/localhost_8080_notes.png)
+
+## links
+[Github](https://github.com/jpcreativeworks/Jenn-Stickee-Pad.git)
+[Heroku](https://stickee-pad-jab.herokuapp.com/)
