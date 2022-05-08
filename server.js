@@ -71,4 +71,4 @@ app.delete("/api/notes/:id", (req,res) => {
 });
 
 console.log('server listening on localhost:8080');
-app.listen(8080);
+app.listen(process.env.PORT || 3000);
