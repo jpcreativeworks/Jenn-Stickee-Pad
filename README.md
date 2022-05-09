@@ -16,7 +16,7 @@ I had trouble with the delete button. I feel like I tried my best but since it w
 
 ## screenshot
 ![Stickee Pad Screenshot on localhost](./public/assets/localhost_8080_notes.png)
-![Stickee Pad Screenshot on heroku](./public/assets/localhost_8080_notes.png)
+![Stickee Pad Screenshot on heroku](./public/assets/stickee-pad-jab.herokuapp.com_notes.png)
 
 ## links
 [Github](https://github.com/jpcreativeworks/Jenn-Stickee-Pad.git)
